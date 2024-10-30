@@ -1,0 +1,26 @@
+ion-list-header {
+  --background: #000000;
+  --border-color: #000000;
+}
+
+ion-item {
+  --border-color: #f0f0f0;
+}
+
+ion-note {
+  color: var(--ion-color-medium);
+}
+
+ion-icon {
+  font-size: 1.2em;
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+ion-toggle {
+  --handle-background: var(--ion-color-primary);
+  --background-checked: var(--ion-color-primary-shade);
+}
