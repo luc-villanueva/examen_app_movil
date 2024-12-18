@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>qr-scan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ionc-padding ion-text-center">
+
+
+ <ion-segment [(ngModel)]="segment">
+  <ion-segment-button value="scan">
+    <ion-label>Scan QR</ion-label>
+  </ion-segment-button>
+ </ion-segment>
+
+ <div class= "segment" *ngIf="segment === 'scan'">
+  <div class="segment-content">
+      <h6 class="scan-label"> Scan QR</h6>
+        <ion-col size="6">
+          <ion-button (click)="startScan()" class="submit" expand="block" >
+            <ion-icon slot="end" name="scan-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+      <ion-item class="result" *ngIf="scanResult" lines="none">
+        <ion-label>
+          <p>Scan Result</p>
+          <div> {{scanResult}} </div>
+        </ion-label>
+      </ion-item>
+  </div>
+ </div>
+</ion-content>

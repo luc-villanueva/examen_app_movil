@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> <img src="assets/icon/logo.png" alt="" width="80px">Localización</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <h2>Ubicación actual</h2>
+    <p>
+      Latitud: {{ currentLocation?.lat || 'Obteniendo...' }}<br />
+      Longitud: {{ currentLocation?.lng || 'Obteniendo...' }}
+    </p>
+    <ion-card [color]="status === 'Habilitado' ? 'success' : 'danger'">
+      <ion-card-header>
+        <ion-card-title>{{ status }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="status === 'Habilitado'">
+          Estás en: {{ activeLocation }}<br />
+          Distancia: {{ distanceToClosest | number:'1.0-2' }} metros
+        </p>
+        <p *ngIf="status === 'Rechazado'">
+          No estás en una sede reconocida.<br />
+          Distancia más cercana: {{ distanceToClosest | number:'1.0-2' }} metros<br />
+          Sede más cercana: {{ activeLocation || 'N/A' }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button
+    *ngIf="status === 'Habilitado'"
+    expand="full"
+    color="primary"
+    [routerLink]="'/qr-scan'"
+    class="qr-button"
+  >
+    Ir a Escanear QR
+  </ion-button>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="inicio">
+      <ion-icon name="home-outline"  routerLink="/menu"></ion-icon>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="localizacion" routerLink="/localizacion">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>Mapa</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="configuracion" routerLink="/config">
+      <ion-icon name="settings-outline"></ion-icon>
+      <ion-label>Configuración</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

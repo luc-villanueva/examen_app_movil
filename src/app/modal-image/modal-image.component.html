@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Selecciona una Asignatura</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item button (click)="selectSubject('Matemáticas')">
+      <ion-label>Matemáticas</ion-label>
+    </ion-item>
+    <ion-item button (click)="selectSubject('Programación')">
+      <ion-label>Programación</ion-label>
+    </ion-item>
+    <ion-item button (click)="selectSubject('Ciencias')">
+      <ion-label>Ciencias</ion-label>
+    </ion-item>
+  </ion-list>
+  <div class="qr-container" *ngIf="selectedSubject">
+    <h2>{{ selectedSubject }}</h2>
+    <img [src]="qrCodeUrl" alt="QR Code" />
+  </div>
+</ion-content>
